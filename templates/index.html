@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Attendance</title>
+    <script>
+        function startVideo() { // Defines JS function # This fct will be excecuted when the start button is clicked
+            // Send a request to the backend to start the video feed
+            fetch('/start_video') // Hadi li9alikom 3liha fetch API # My stupid ass though that is gonna be complicated
+                .then(response => { // Check
+                    if (response.ok) {
+                        // If the response is okay, update the image source to start the video feed
+                        document.getElementById('videoFeed').src = '/video_feed'; // start loading the video feed form that endpoint 
+                    } else {
+                        alert('Failed to start video feed');
+                    }
+                });
+        }
+        function stopVideo() {
+            fetch('/stop_video') // Send a request to the backend to stop the video feed
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('videoFeed').src = ''; // Clear the video feed
+                } else {
+                    alert('Failed to stop video feed');
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Face Recognition Attendance System</h1>
+    <button onclick="startVideo()">Start</button>
+    <button onclick="stopVideo()">Stop</button>
+    <div>
+        <img id="videoFeed" src="" style="width: 100%; height: auto;" alt="Video Feed">
+    </div>
+    <div>
+        <h2>Notes:</h2>
+        <p>Here you can add any notes or alerts</p>
+    </div>
+</body>
+</html>
