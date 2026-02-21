@@ -1,0 +1,426 @@
+/* EduTrack Custom Styles - Purple Theme */
+
+/* CSS Custom Properties for Purple Theme */
+:root {
+    --primary-purple: #667eea;
+    --secondary-purple: #764ba2;
+    --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-shadow: 0 15px 35px rgba(102, 126, 234, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+    --card-shadow-hover: 0 20px 40px rgba(102, 126, 234, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1);
+    --text-light: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.8);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--gradient-bg) !important;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated Background Elements */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(102, 126, 234, 0.2) 0%, transparent 50%);
+    z-index: -1;
+    animation: backgroundMove 20s ease-in-out infinite;
+}
+
+@keyframes backgroundMove {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+}
+
+/* Login Cards */
+.login-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+}
+
+.login-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--card-shadow-hover);
+}
+
+/* Main Card Styles */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease-in-out;
+    border-radius: 1rem;
+}
+
+.card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+}
+
+.card-body {
+    position: relative;
+    z-index: 2;
+}
+
+/* Statistics Cards */
+.border-left-primary {
+    border-left: 0.25rem solid var(--primary-purple) !important;
+}
+
+.border-left-success {
+    border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-left-info {
+    border-left: 0.25rem solid #36b9cc !important;
+}
+
+.border-left-warning {
+    border-left: 0.25rem solid #f6c23e !important;
+}
+
+/* Table Styles */
+.table-hover tbody tr:hover {
+    background-color: rgba(102, 126, 234, 0.05);
+}
+
+/* Navigation */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: var(--text-light);
+}
+
+/* Enhanced Button Styles */
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #3d5aa8 0%, #1e3d8f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(78, 115, 223, 0.3);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #1cc88a 0%, #17a673 100%);
+    border: none;
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #17a673 0%, #138f61 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(28, 200, 138, 0.3);
+}
+
+.btn-purple {
+    background: var(--gradient-bg);
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-purple:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+    color: white;
+}
+
+/* Alerts with Purple Theme */
+.alert {
+    border-radius: 0.75rem;
+    border: none;
+    backdrop-filter: blur(10px);
+}
+
+.alert-danger {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    color: #721c24;
+}
+
+.alert-success {
+    background: rgba(28, 200, 138, 0.1);
+    border: 1px solid rgba(28, 200, 138, 0.2);
+    color: #155724;
+    animation: slideInDown 0.6s ease-out;
+}
+
+/* Enhanced Form Controls */
+.form-control {
+    border-radius: 0.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: var(--input-bg);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-1px);
+}
+
+.form-control::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+/* Modal Enhancements */
+.modal-content {
+    border-radius: 1rem;
+    border: none;
+    box-shadow: var(--card-shadow);
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+    background: var(--gradient-bg);
+    color: white;
+    border-radius: 1rem 1rem 0 0;
+}
+
+/* Custom Badge Colors */
+.badge {
+    font-size: 0.75em;
+    border-radius: 0.5rem;
+    font-weight: 600;
+}
+
+/* Loading Spinner */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Purple Theme Text Colors */
+.text-purple {
+    color: var(--primary-purple) !important;
+}
+
+.text-light-purple {
+    color: var(--text-muted) !important;
+}
+
+/* Enhanced Icons */
+.fa {
+    transition: all 0.3s ease;
+}
+
+.card:hover .fa {
+    transform: scale(1.1);
+}
+
+/* Session Timer */
+.session-timer {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+/* Attendance Cards */
+.attendance-card {
+    border-left: 4px solid #28a745;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+}
+
+.attendance-card.unknown {
+    border-left: 4px solid #dc3545;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .col-md-6 {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .btn,
+    .dropdown,
+    .modal {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #000;
+        page-break-inside: avoid;
+        background: white !important;
+    }
+    
+    body {
+        background: white !important;
+    }
+}
+
+/* Enhanced Animations */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Custom scrollbar with purple theme */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-purple);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-purple);
+}
+
+/* Glass morphism effect for special elements */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+}
+
+/* Floating animation for feature icons */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Purple gradient text */
+.gradient-text {
+    background: var(--gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+}
+
+/* Enhanced shadow effects */
+.shadow-purple {
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15) !important;
+}
+
+.shadow-purple-lg {
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2) !important;
+}
